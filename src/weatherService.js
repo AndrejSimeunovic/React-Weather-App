@@ -5,7 +5,7 @@ export default async function getWeatherDataByCity(value) {
     /*const res = await fetch(
       `${BASEURL}?q=${value}&units=metric&APPID=${APIKEY}`
     );*/
-    const res = await fetch(`http://localhost:5000/api?q=${value}`);
+    const res = await fetch(`/api?q=${value}`);
     const data = await res.json();
     const lonlat = await getLonLat(data);
     const customData = await fetchForecast(lonlat, data);
