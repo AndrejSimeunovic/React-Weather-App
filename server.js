@@ -11,7 +11,6 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.static("/"));
 //enable cors
 app.use(cors());
 
