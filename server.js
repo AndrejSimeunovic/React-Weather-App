@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import axios from "axios";
-import url from "url";
 import rateLimit from "express-rate-limit";
 
 const PORT = 5000;
@@ -10,6 +9,8 @@ const PORT = 5000;
 dotenv.config();
 
 const app = express();
+
+app.use(express.static("dist"))
 
 //enable cors
 app.use(cors());
