@@ -2,10 +2,9 @@ import { ICON_MAP } from "./iconMap";
 
 export default async function getWeatherDataByCity(value) {
   try {
-    /*const res = await fetch(
-      `${BASEURL}?q=${value}&units=metric&APPID=${APIKEY}`
-    );*/
-    const res = await fetch(`/api?q=${value}`);
+    const res = await fetch(
+      `http://localhost:5000/api/openweathermap?q=${value}`
+    );
     const data = await res.json();
     const lonlat = await getLonLat(data);
     const customData = await fetchForecast(lonlat, data);
@@ -23,7 +22,7 @@ async function getLonLat(data) {
 
 async function fetchForecast({ lon, lat }, dataOW) {
   return fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset&current_weather=true&timeformat=unixtime&timezone=GMT`
+    `http://localhost:5000/api/open-meteo?latitude=${lat}&longitude=${lon}`
   )
     .then((res) => res.json())
     .then((data) => {
