@@ -14,6 +14,7 @@ function WeatherPage() {
 
   function displayData(cityValue) {
     setIsLoading(true);
+    setIsFetched(false)
     getWeatherDataByCity(cityValue)
       .then((response) => {
         setData(response);
