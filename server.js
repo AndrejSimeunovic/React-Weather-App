@@ -27,7 +27,6 @@ app.set("trust proxy", 1);
 const APIKEY = process.env.VITE_API_KEY;
 const BASEURL = process.env.VITE_BASE_URL;
 const BASEURL2 = process.env.VITE_BASE_URL_2;
-console.log(BASEURL2);
 
 app.get("/api/openweathermap", async (req, res) => {
   try {
