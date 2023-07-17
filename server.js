@@ -33,6 +33,7 @@ app.get("/api/openweathermap", async (req, res) => {
     const response = await axios.get(`${BASEURL}`, {
       params: {
         q: req.query.q,
+        units: "metric",
         APPID: APIKEY,
       },
     });
