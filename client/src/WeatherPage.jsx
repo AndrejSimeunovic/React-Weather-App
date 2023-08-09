@@ -5,6 +5,7 @@ import ForeCastHourly from "./ForeCastHourly";
 import ForeCastDaily from "./ForeCastDaily";
 import CurrentWeather from "./CurrentWeather";
 import LoadingScreen from "./LoadingScreen";
+import { toast } from "react-toastify";
 
 function WeatherPage() {
   const city = useRef();
@@ -14,7 +15,7 @@ function WeatherPage() {
 
   function displayData(cityValue) {
     setIsLoading(true);
-    setIsFetched(false)
+    setIsFetched(false);
     getWeatherDataByCity(cityValue)
       .then((response) => {
         setData(response);
@@ -22,7 +23,7 @@ function WeatherPage() {
       })
       .catch((e) => {
         setIsFetched(false);
-        alert(e.message);
+        toast.error(e.message);
       })
       .finally(() => {
         setIsLoading(false);

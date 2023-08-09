@@ -1,24 +1,19 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import axios from "axios";
-import rateLimit from "express-rate-limit";
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
+const axios = require("axios");
+const rateLimit = require("express-rate-limit");
 
-const PORT = 5000;
-
-dotenv.config();
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-// run the whole app on the server
-//app.use(express.static("dist"))
-
-//enable cors
 app.use(cors());
 
 const limiter = rateLimit({
-  windowMs: 86400000, // 1 day
+  windowMs: 24 * 60 * 60 * 1000, // 24 hrs in milliseconds
   max: 1000,
+  message: "You have exceeded the 1000 requests in 24 hrs limit!",
 });
 
 app.use(limiter);
@@ -27,6 +22,10 @@ app.set("trust proxy", 1);
 const APIKEY = process.env.VITE_API_KEY;
 const BASEURL = process.env.VITE_BASE_URL;
 const BASEURL2 = process.env.VITE_BASE_URL_2;
+
+app.get("/", (req, res) => {
+  res.send("hello");
+});
 
 app.get("/api/openweathermap", async (req, res) => {
   try {
