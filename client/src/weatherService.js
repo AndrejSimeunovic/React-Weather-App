@@ -3,7 +3,7 @@ import { ICON_MAP } from "./iconMap";
 export default async function getWeatherDataByCity(value) {
   try {
     const res = await fetch(
-      `http://localhost:5000/api/openweathermap?q=${value}`
+      `https://react-weather-app-backend.vercel.app/api/openweathermap?q=${value}`
     );
     const data = await res.json();
     const lonlat = await getLonLat(data);
@@ -22,7 +22,7 @@ async function getLonLat(data) {
 
 async function fetchForecast({ lon, lat }, dataOW) {
   return fetch(
-    `http://localhost:5000/api/open-meteo?latitude=${lat}&longitude=${lon}`
+    `https://react-weather-app-backend.vercel.app/api/open-meteo?latitude=${lat}&longitude=${lon}`
   )
     .then((res) => res.json())
     .then((data) => {
