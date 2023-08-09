@@ -128,3 +128,23 @@ button {
     flex-direction: column;
     gap: 5px;
 }
+
+@media (max-Width:630px) {
+    .container {
+        margin: auto;
+    }
+
+    .weathercontainer {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .forecast {
+        width: 100%;
+        height: auto;
+    }
+
+    .moredetailed {
+        display: none;
+    }
+}
